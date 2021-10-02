@@ -1,4 +1,6 @@
 # CP + DSA
+<b>Note</b>: Please fetch upstream before making pull request to update your local repo.
+<br/>
 To contribute, add your code / file in respective folders.
 # Contribution Guide
 ##### If you don't have git on your machine, [install it](https://help.github.com/articles/set-up-git/).
