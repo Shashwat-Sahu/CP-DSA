@@ -1,4 +1,5 @@
-* Following program is a C++ implementation of Rabin Karp
+// https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/
+/* Following program is a C++ implementation of Rabin Karp
 Algorithm given in the CLRS book */
 #include <bits/stdc++.h>
 using namespace std;
