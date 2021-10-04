@@ -1,8 +1,8 @@
 // link to problem : https://leetcode.com/problems/minimum-moves-to-convert-string/
-
-class Solution {
-public:
-    int minimumMoves(string s) {
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int minimumMoves(string s) {
         int c=0;
         string str=s;
         for(int i=0;i<s.length();){
@@ -16,8 +16,13 @@ public:
                     i++;
                 }c++;
             }
-	    else
+        else
                 i++;
         }return c;
-    }
-};
+}
+int main(){
+    string s;
+    cin>>s;
+    cout<<"Minimum moves ="<<minimumMoves(s);
+    return 0;
+}
