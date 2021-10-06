@@ -2,19 +2,22 @@
 using namespace std;
  
 // Link list node
-struct Node {
+class Node {
     int data;
-    struct Node* next;
+    Node* next;
     Node(int data)
     {
-        this->data = data;
+        data = data;
         next = NULL;
     }
 };
  
-struct LinkedList {
+ LinkedList {
     Node* head;
-    LinkedList() { head = NULL; }
+    LinkedList()
+    { 
+     head = NULL; 
+    }
  
     /* Function to reverse the linked list */
     void reverse()
@@ -41,7 +44,7 @@ struct LinkedList {
     /* Function to print linked list */
     void print()
     {
-        struct Node* temp = head;
+         Node* temp = head;
         while (temp != NULL) {
             cout << temp->data << " ";
             temp = temp->next;
@@ -61,11 +64,17 @@ int main()
 {
     /* Start with the empty list */
     LinkedList ll;
-    ll.push(20);
-    ll.push(4);
-    ll.push(15);
-    ll.push(85);
  
+ int size;
+ cout<<"Enter Size of list : ";
+ cin>>size;
+ for(int i=0;i<size;i++)
+ {
+  int x;
+  cin>>x;
+ ll.push(x);
+ }
+  
     cout << "Given linked list\n";
     ll.print();
  
