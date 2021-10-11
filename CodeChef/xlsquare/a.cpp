@@ -1,3 +1,4 @@
+// https://www.codechef.com/problems/XLSQUARE
 #include <iostream>
 using namespace std;
 
