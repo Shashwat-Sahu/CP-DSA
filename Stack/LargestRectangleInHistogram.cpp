@@ -29,7 +29,7 @@ int get_area(vi a){
             }
         }
         st.push(i);
-        i++;
+        i=i+1;
     }
     return ans;
 }
