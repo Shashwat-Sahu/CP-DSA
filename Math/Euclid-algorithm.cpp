@@ -13,6 +13,6 @@ int main(){
 	cout<<"Enter 2 Numbers";
     cin>>a>>b;
 	hcf = gcd(a, b);
-	cout<<"Hcf of 2 numbers is "<<hcf<<endl;
+	cout<<"HCF of 2 numbers is "<<hcf<<endl;
     return 0;
 }
