@@ -10,7 +10,7 @@ int maxProfit(vector<int>& prices) {
     int n=prices.size();
     int maxx=prices[n-1];
     int maxPr=0;
-    for(int i=n-2;i>=0;i--){
+    for(int i=n-2;i>-1;i--){
         maxx=max(maxx,prices[i]);
         maxPr=max(maxPr,maxx-prices[i]);
     }

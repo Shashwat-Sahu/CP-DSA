@@ -29,14 +29,14 @@ int kadanes(int array[], int length)
 int main()
 {
     cout << "Enter the array length: ";
-    int l;
-    cin >> l;
-    int arr[l];
+    int n;
+    cin >> n;
+    int arr[n];
     cout << "Enter the elements of array: ";
-    for (int i = 0; i < l; i++)
+    for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
     }
-    cout << "The Maximum Sum is: " << kadanes(arr, l) << endl;
+    cout << "The Maximum Sum is: " << kadanes(arr, n) << endl;
     return 0;
 }
