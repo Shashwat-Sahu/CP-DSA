@@ -14,7 +14,7 @@ bool checkDistanceValidity(ll d, ll c, ll arr[], ll n)
     {
         if (arr[i] - last >= d)
         {
-            placed_cows++;
+            placed_cows+=1;
             if (placed_cows == c)
                 return true;
             last = arr[i];
