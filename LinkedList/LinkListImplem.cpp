@@ -45,7 +45,7 @@ void insertMid(node *start,ll i,ll n){
     node *test=start;
     while(n>1){
         test=test->ind;
-        n--;
+        n=n-1;
     }
     node *x=new node(i);
     node* temp=test->ind;
@@ -68,7 +68,7 @@ void delMid(node* &start,ll n){
     while(n>1){
         lenAvil++;
         test=test->ind;
-        n--;
+        n=n-1;
     }
     node* next=(test->ind);
     test->ind=next->ind;
@@ -79,13 +79,13 @@ void swapVal(node * start,ll i,ll j){
     node *check=start;
     while(i>1){
         check=check->ind;
-        i--;
+        i=i-1;
     }
     node *ind1=check;
     check=start;
     while(j>1){
         check=check->ind;
-        j--;
+        j=j-1;
     }
     node* ind2=check;
     node *toswap=ind1->ind;
