@@ -36,17 +36,17 @@ class NodeOperation{
     }
      
     void printMiddle(class Node *head){
-        struct Node *slow_ptr = head;
-        struct Node *fast_ptr = head;
+        struct Node *slowP = head;
+        struct Node *fastP = head;
   
         if (head!=NULL)
         {
-            while (fast_ptr != NULL && fast_ptr->next != NULL)
+            while (fastP != NULL && fastP->next != NULL)
             {
-                fast_ptr = fast_ptr->next->next;
-                slow_ptr = slow_ptr->next;
+                fastP = fastP->next->next;
+                slowP = slowP->next;
             }
-            cout << "The middle element is [" << slow_ptr->data << "]" << endl;
+            cout << "The middle element is [" << slowP->data << "]" << endl;
         }
     }
 };
