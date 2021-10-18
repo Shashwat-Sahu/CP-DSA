@@ -40,19 +40,19 @@ void insertAtHead(node* &head,int val){
 node* merge_list(node* &head1,node* &head2){
     node* temp1=head1;
     node* temp2=head2;
-    node* dummy=new node(-1);
-    node* temp=dummy;
+    node* temp=new node(-1);
 
     while(temp1!=NULL && temp2!=NULL){
-        if(temp1->data <= temp2->data){
+        if(temp1->data < temp2->data){
             temp->next=temp1;
             temp1=temp1->next;
+            temp = temp->next;
         }
         else{
             temp->next=temp2;
             temp2=temp2->next;
+            temp = temp->next;
         }
-        temp=temp->next;
     }
     while(temp1!=NULL){
         temp->next=temp1;
