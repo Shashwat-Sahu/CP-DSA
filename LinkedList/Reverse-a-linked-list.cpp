@@ -25,11 +25,11 @@ class Node {
         // Initialize current, previous and
         // next pointers
         Node* current = head;
-        Node *prev = NULL, *next = NULL;
+        Node *prev = NULL;
  
         while (current != NULL) {
             // Store next
-            next = current->next;
+            Node *next = current->next;
  
             // Reverse current node's pointer
             current->next = prev;
