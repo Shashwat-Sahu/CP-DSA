@@ -1,0 +1,40 @@
+//given a lowercase string , partition s into as many pieces as possible such that each letter appears in at most one piece and return the sizes of the partition.
+// i/p: cocoplaydae
+// o/p: [4,1,1,4,1]
+// exp: ["coco" "p" "l" "ayda" "e"]
+
+ #include<bits/stdc++.h>
+using namespace std;
+
+vector<int> solve(string s)
+{
+    vector<int>ans;
+    int arr[26]={-1};
+    for(int i=0;i<s.length();i++)
+    arr[s[i]-'a']=i;
+    int i=0;
+    while(i<s.length())
+    {
+        int start=i;
+        int j= arr[s[i]-'a'];
+        while(j>i)
+        {
+            if(arr[s[i]-'a']>j)
+            j=arr[s[i]-'a'];
+            i++;
+        }
+        ans.push_back(j-start+1);
+        i++;
+    }
+    return(ans);
+}
+
+int main()
+{
+    string s;
+    cin>>s;
+    vector<int>v= solve(s);
+    for(int i=0;i<v.size();i++)
+    cout<<v[i]<<" ";
+    return 0;
+}
