@@ -1,0 +1,103 @@
+package notepad;
+
+import java.util.ArrayList;
+import java.util.Collection.*;
+import java.util.Comparator;
+import java.util.*;
+
+
+class pair{
+	public int x;
+	public int y;
+	pair(int x, int y){
+		this.x=x;
+		this.y=y;
+	}
+	public String toString() {
+		return "[ " +x+","+y+" ]";
+	}
+}
+
+public class index {
+	public static double test(ArrayList<pair> arr,int low, int mid , int high){
+		double dl= (1e4);
+		for(int i=low;i<=mid;i++) {
+			for(int j=i+1;j<mid;j++) {
+				int diffX=(arr.get(i).x-arr.get(j).x);
+				int diffY=(arr.get(i).y-arr.get(j).y);
+				dl=Math.min(dl, Math.sqrt(diffY*diffY+diffX*diffX));
+			}
+		}
+		double dr=1e4;
+		for(int i=mid+1;i<=high;i++) {
+			for(int j=i+1;j<=high;j++) {
+				int diffX=(arr.get(i).x-arr.get(j).x);
+				int diffY=(arr.get(i).y-arr.get(j).y);
+				dr=Math.min(dr, Math.sqrt(diffY*diffY+diffX*diffX));
+			}
+		}
+		return Math.min(dl, dr);
+	}
+	
+	public static double minDist(ArrayList<pair> arr,int low, int high) {
+		double min= (1e4);
+		if(low<high) {
+			int mid=(low+high)/2;
+			min=Math.min(minDist(arr,low,mid),min);
+			min=Math.min(minDist(arr,mid+1,high),min);
+			double d=test(arr, low, mid, high);
+			d=Math.min(min, d);
+			ArrayList<pair> arrayList=new ArrayList<>();
+			
+			for(int i=low;i<=high;i++) {
+				double dist=Math.abs(arr.get(i).x-mid);
+				if(dist<=d) arrayList.add(arr.get(i)); 
+			}
+			
+			Collections.sort(arrayList,(a,b)->{
+				if(a.y!=b.y)return a.y-b.y;
+				return a.x-b.x;
+			});
+			
+			int lowest=0;
+			double curMin=1e4;
+			for(int i=1;i<arrayList.size();i++) {
+				pair item=arrayList.get(i);
+				if(lowest>arrayList.size()) break;
+				pair secPair=arrayList.get(lowest);
+				if(Math.abs(item.y-secPair.y)>d) lowest++;
+				int diffX=(secPair.x-item.x);
+				int diffY=(secPair.y-item.y);
+				curMin=Math.min(curMin, Math.sqrt(diffY*diffY+diffX*diffX));
+			};
+			return Math.min(curMin, d);
+			
+			
+		}
+		return min;
+	}
+	
+	
+	public static void main(String[] args) {
+		java.util.Scanner input=new java.util.Scanner(System.in);
+		ArrayList<pair> arrayList=new ArrayList<>();
+		int n=input.nextInt();
+		
+		arrayList.ensureCapacity(n);
+		
+		for(int i=0;i<n;i++) {
+			arrayList.add(new pair(input.nextInt(),input.nextInt()));
+		}
+		
+		Collections.sort(arrayList,(a,o)->{
+			if(a.x!=o.x)return a.x-o.x;
+			return a.y-o.y;
+		});
+		
+		System.out.print(minDist(arrayList, 0, n-1));
+		
+		
+
+	}
+
+}
