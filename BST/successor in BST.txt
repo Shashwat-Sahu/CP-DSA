@@ -1,0 +1,59 @@
+
+import java.io.*;
+
+class node{
+    public int data;
+    public node left;
+    public node right;
+    public node parent;
+    node(int data, node parent){
+        this.data=data;
+        this.parent=parent;
+        this.right=null;
+        this.left=null;
+    }
+}
+
+
+
+class second{
+    static void print(node root){
+        if(root==null)return;
+        print(root.left);
+        System.out.print(root.data+" ");
+        print(root.right);
+    }
+
+    public static node min(node root){
+        if(root.left==null)return root;
+        return min(root.left);
+    }
+    public static node succ(node find){
+        if(find.right!=null) return min(find.right);
+        while(find.parent!=null&&find==find.parent.right){
+            find=find.parent;
+        }
+        if(find.parent==null)return null;
+        return find.parent;
+    }
+
+    public static void print1(node root){
+        System.out.print(root.data+" ");
+        node temp=succ(root);
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=succ(temp);
+        }
+    }
+    
+    public static void main(String[] args) throws IOException{
+        node root=new node(5,null);
+        root.left=new node(3,root);
+        root.right=new node(6,root);
+        root.left.left=new node(2,root.left);
+        root.left.right=new node(4,root.left);
+        root.right.right=new node(7,root.right);       
+        print1(root.left.left);
+        
+    }
+}
