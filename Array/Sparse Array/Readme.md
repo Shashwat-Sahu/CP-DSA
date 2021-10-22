@@ -1,3 +1,3 @@
 # Sparse Array
-Problem link: https://www.hackerrank.com/challenges/array-left-rotation/problem <br>
+Problem link: https://www.hackerrank.com/challenges/sparse-arrays/problem <br>
 Level: Medium
