@@ -1,0 +1,17 @@
+class Solution
+{
+        
+    long mod=(long) (1e9+7);
+        
+    long power(int N,int R)
+    {
+        if(R==1) return N;
+        if(R==0) return 1;
+        
+        long nby2=(power(N, R/2))%mod;
+        
+        if(R%2==0) return (nby2*nby2)%mod;
+        else return (nby2*((nby2*N)%mod))%mod;   
+    }
+
+}
