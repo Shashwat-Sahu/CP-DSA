@@ -1,0 +1,51 @@
+package mysqlJDBC;
+import java.util.*;
+
+class Ary{
+	int[] arr;
+	int size;
+	int ind;
+	int cur;
+	public Ary(int[] arr,int size,int ind) {
+		this.arr=arr;
+		this.size=size;
+		this.ind=ind;
+		this.cur=0;
+	}
+}
+
+public class HelloAp {
+
+	public static void mergeList(Ary[] arr) {
+		ArrayList<Integer> sortedArrayList=new ArrayList<>();
+		
+		int count[]=new int[arr.length];
+		
+		PriorityQueue<Ary> priorityQueue=new PriorityQueue<Ary>(arr.length,(Ary a,Ary b)->{
+			return a.arr[a.cur]-b.arr[b.cur];
+		});
+		for(Ary i:arr) priorityQueue.add(i);
+		while(!priorityQueue.isEmpty()) {
+			Ary ary=priorityQueue.poll();
+			sortedArrayList.add(ary.arr[ary.cur++]);
+			if(ary.cur>=ary.size);
+			else priorityQueue.add(ary);
+		}
+		System.out.println(sortedArrayList.toString());
+	}
+	
+	public static void main(String[] args) {
+		Scanner input=new Scanner(System.in);
+		int n=input.nextInt();
+		Ary[] arr=new Ary[n];
+		
+		for(int i=0;i<n;i++) {
+			int m=input.nextInt();
+			int[] temp=new int[m];
+			for(int j=0;j<m;j++) temp[j]=input.nextInt();
+			arr[i]=new Ary(temp, m, i);
+		}
+		mergeList(arr);
+		
+	}
+}
