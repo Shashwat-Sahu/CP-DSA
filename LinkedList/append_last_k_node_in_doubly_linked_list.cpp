@@ -5,59 +5,77 @@ class node{
     public:
     int data;
     node* next;
-
+    node* pre;
     node(int val){
         data=val;
         next=NULL;
+        pre=NULL;
     }
-
 };
 
-void insertAtTail(node* &head, int val){
-    node* n=new node(val);
+void insert_at_tail(node* &head,int val){
+    node* x=new node(val);
 
     if (head==NULL)
     {
-        head=n;
+        head=x;
         return;
     }
+    node* temp=head;
+    while (temp->next!=NULL)
+    temp=temp->next;
+    temp->next=x;
+    x->pre=temp;
     
-    node* temp =head;
-    while (temp -> next != NULL)
+}
+
+void insert_at_head(node* &head,int val){
+    node* x=new node(val);
+    if (head==NULL)
+    {
+        head=x;
+        return;
+    }
+    head->pre=x;
+    x->next= head;
+    head=x;
+
+}
+
+void append_k_node(node* &head,int val){
+    node* temp=head;
+    int len=0;
+    node* tail;
+    while (temp!=NULL){
+        len++;
+        if (temp->next==NULL)
+        {
+            tail=temp;
+        }
+        
+        temp=temp->next;
+    }
+    // val=val%len;
+    cout<<len<<"  ";
+    int x=len-val;
+    temp=head;
+    cout<<x<<"  ";
+    while (x--)
     {
         temp=temp->next;
     }
-    temp->next=n;
-    
+    cout<<(temp->data)<<endl;
+    temp->pre->next=NULL;
+    tail->next=head;
+    head->pre=tail;
+    temp->pre=NULL;
+    head=temp;
+
 }
 
-void insertAtHead(node* &head,int val){
-    node* n=new node(val);
-    n->next=head;
-    head=n;
-}
-
-void even_node_after_odd(node* &head){
-    node* odd=head;
-    node* evenhead=head->next;
-    node* even=head->next;
-
-    while (odd->next!=NULL && even->next!=NULL)
-    {
-        odd->next=even->next;
-        odd=odd->next;
-        even->next=odd->next;
-        even=even->next;
-    }
-    odd->next=evenhead;
-    
-    // even->next=NULL;
-}
-
-void display(node* head){
+void display(node* &head){
     node* temp=head;
-    while (temp!=NULL)
-    {
+    while(temp!=NULL){
         cout<<temp->data<<"->";
         temp=temp->next;
     }
@@ -65,20 +83,20 @@ void display(node* head){
 }
 
 int main(){
+    cout<<"hello"<<endl;
     node* head=NULL;
-    insertAtTail(head,2);
-    insertAtTail(head,5);
-    insertAtTail(head,7);
-    insertAtHead(head,9);
-    insertAtHead(head,19);
-    insertAtTail(head,5);
-    insertAtTail(head,7);
-    insertAtHead(head,1);
-    insertAtHead(head,11);
+    insert_at_tail(head,5);
+    insert_at_tail(head,2);
+    insert_at_head(head,7);
+    insert_at_head(head,12);
+    insert_at_tail(head,4);
+    insert_at_head(head,4);
+    insert_at_tail(head,19);
+    insert_at_head(head,9);
+    
     display(head);
-
-    even_node_after_odd(head);
+    append_k_node(head,5);
     display(head);
-
+    
  return 0;
 }
