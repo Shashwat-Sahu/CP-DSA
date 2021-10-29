@@ -4,10 +4,9 @@ int Factorial(int);
 int Factorial(int n)
 {
     int fac = 1;
-    while (n > 0)
+    while (n--)
     {
         fac = fac * n;
-        n--;
     }
     return fac;
 }
