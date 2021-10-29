@@ -39,7 +39,7 @@ bool isIdentical(node* root1, node* root2){
         bool cond2 = isIdentical(root1->left, root2->left);
         bool cond3 = isIdentical(root1->right, root2->right);
 
-        if(cond1 && cond2 && cond3)
+        if(cond1==true && cond2==true && cond3==true)
             return true;
 
         return false;
