@@ -21,8 +21,8 @@ int kadanes(int array[], int length)
     int currentElementMax = 0;
     for (int i = 0; i < length; i++)
     {
-        currentElementMax = max(array[i], currentElementMax + array[i]);
-        highestMax = max(highestMax, currentElementMax);
+         highestMax = max({highestMax, array[i], currentElementMax + array[i]});
+         currentElementMax = max(array[i], currentElementMax + array[i]);
     }
     return highestMax;
 }
